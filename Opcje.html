@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Serwer S3 - Dostępne Opcje</title>
+	<style>
+		body, html {
+			display: block;
+            background-color: #ddd;
+			padding: 0;
+			margin: 0;
+            height: 100%;
+            width: 100%;
+		}
+		
+		main {
+            background-color: #aaa;
+			contain: layout;
+			/*padding: 1rem;*/
+            height: 100%;
+			width: 100%;
+		}
+		
+		* {
+            font-family: system-ui;
+		}
+		
+		.tabs {
+            background-color: #500;
+			color: #fff;
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+			
+			> .tabBuffer {
+				width: 100%;
+			}
+			
+			> .tab {
+				display: contents;
+                background-color: #440;
+				width: inherit;
+				
+				> .tabSwitch {
+					display: contents;
+					
+					> .tabName {
+                        order: -2;
+						z-index: 2;
+						background-color: #050;
+						width: fit-content;
+						padding: 0.5rem;
+						border-radius: 0 0 0.5rem 0.5rem;
+						user-select: none;
+						cursor: pointer;
+						margin: 0 0 0.5rem 0.5rem;
+						transition:
+							color 300ms, background-color 300ms,
+							padding 300ms, margin 300ms;
+					}
+					
+					> .tabInput {
+						display: none;
+					}
+				}
+				
+				> .tabAnchor {
+                    /*order: 1;*/
+                    width: 0.01%;
+					z-index: 0;
+                    /*height: 100%;*/
+					height: calc(100dvh - 2.875rem);
+					margin-bottom: 2.875rem;
+                    overflow-x: visible;
+					overflow-y: scroll;
+					color: #fff;
+					transition: height 3s, width 3s;
+					
+					> .tabArea {
+                        height: 100%;
+						width: 100%;
+                        overflow-x: hidden;
+						overflow-y: scroll;
+						/*transition: width 3s, height 3s;*/
+                        > .tabContent {
+                            /*margin-top: 0rem;*/
+                            /*margin-left: 35%;*/
+                            width: 100dvw;
+                            height: 100%;
+							/*height: 500rem;*/
+                            transition: width 3s, height 3s, margin 3s, padding 3s;
+                            /*background-color: #0048;*/
+							background-size: cover;
+							background-position: center;
+                            overflow-x: hidden;
+							/*overflow-y: scroll;*/
+                            padding: 2rem;
+                            box-sizing: border-box;
+
+                            h2 {
+                                margin: 0;
+                                background-color: #0007;
+								/*backdrop-filter: blur(5px);*/
+								padding: 0.5rem;
+								text-align: center;
+								border-radius: 1rem;
+                            }
+							
+							p {
+                                /*margin: 0;*/
+                                background-color: #0005;
+                                /*backdrop-filter: blur(20px);*/
+                                padding: 1rem;
+                                text-align: justify;
+                                border-radius: 0.5rem;
+							}
+							
+							table {
+								display: block;
+								width: 100%;
+								overflow: scroll;
+							}
+							
+							th, td, table, tr {
+								/*border-collapse: collapse;*/
+								/*border: 1rem solid #0001;*/
+								border-spacing: 0.5rem;
+								margin: -0.5rem;
+							}
+							
+							th, td {
+                                padding: 0.5rem;
+                                text-align: justify;
+                                border-radius: 0.5rem;
+							}
+							
+							th {
+                                background-color: #0007;
+                                /*backdrop-filter: blur(20px);*/
+								text-align: center;
+                                width: fit-content
+							}
+							
+							td {
+                                background-color: #0005;
+                                /*backdrop-filter: blur(5px);*/
+                                text-align: left;
+								transition: background-color 300ms;
+								width: fit-content;
+							}
+							
+							td.number {
+                                text-align: right;
+								width: min-content;
+							}
+							
+							td.long {
+								width: min-content;
+							}
+							
+							tr:hover > td:not([rowspan]) {
+                                background-color: #666d;
+							}
+                        }
+                    }
+				}
+			}
+			
+			> .tab:has(> .tabSwitch > .tabInput:checked) {
+                background-color: #220;
+				> .tabSwitch {
+					> .tabName {
+                        background-color: #080;
+						padding-bottom: 1.5rem;
+						margin-bottom: -0.5rem;
+					}
+				}
+				> .tabAnchor {
+                    /*order: 0;*/
+					z-index: 1;
+					width: 99.9%;
+                    > .tabArea {
+						height: 100%;
+						width: 100%;
+                        > .tabContent {
+                            /*margin: 0;*/
+                            /*height: 100%;*/
+                            /*width: 100%;*/
+                            /*padding: 2rem;*/
+							/*box-sizing: border-box;*/
+                        }
+                    }
+				}
+			}
+		}
+	
+	</style>
+</head>
+<body>
+<main>
+<!--	<h1>Minecraft S3 - Opcje na serwer</h1>-->
+	<div class="tabs">
+		<div class="tabBuffer"></div>
+		<div class="tab">
+			<label class="tabSwitch">
+				<div class="tabName">
+					Vanilla
+				</div>
+				<input type="radio" name="tab" class="tabInput" checked>
+			</label>
+			<div class="tabAnchor">
+				<div class="tabArea">
+					<div class="tabContent" style="background-image: url('images/vanilla_1.png')">
+						<h2>Vanilla</h2>
+						<p>Zwykły Minecraft, na najnowszej wersji</p>
+						<table>
+							<tr>
+								<th rowspan="2">FPS</th>
+								<th rowspan="2">Odległość renderowania</th>
+								<th colspan="2">Wykorzystanie pamięci (Poglądowe)</th>
+								<th colspan="4">Parametry stanowiska testowego</th>
+								<th rowspan="2">Notatki</th>
+							</tr>
+							<tr>
+								<th>Od</th>
+								<th>Do</th>
+								<th>CPU</th>
+								<th>GPU</th>
+								<th>RAM</th>
+								<th>OS</th>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;120</td>
+								<td class="number">32</td>
+								<td class="number">1.4 GB</td>
+								<td class="number">2.8 GB</td>
+								<td rowspan="3">Laptop Ryzen 7 4800H</td>
+								<td rowspan="3">RTX 2060</td>
+								<td rowspan="3" class="number">16 GB</td>
+								<td rowspan="3">Arch Linux</td>
+								<td rowspan="3" style="text-align: center">Klient Neoforge<br>(bez modów)</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;200</td>
+								<td class="number">12</td>
+								<td class="number">1.2 GB</td>
+								<td class="number">2.7 GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;230</td>
+								<td class="number">6</td>
+								<td class="number">1.0 GB</td>
+								<td class="number">2.7 GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;180</td>
+								<td class="number">32</td>
+								<td class="number">1.8 GB</td>
+								<td class="number">3.2 GB</td>
+								<td rowspan="3">Ryzen 5 5600X</td>
+								<td rowspan="3">RTX 3060</td>
+								<td rowspan="3" class="number">16 GB</td>
+								<td rowspan="3">Windows 11</td>
+								<td rowspan="3" style="text-align: center">Klient Vanilla</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;370</td>
+								<td class="number">12</td>
+								<td class="number">0.9 GB</td>
+								<td class="number">2.2 GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;420</td>
+								<td class="number">6</td>
+								<td class="number">0.6 GB</td>
+								<td class="number">1.6 GB</td>
+							</tr>
+							<tr>
+								<td class="number">?</td>
+								<td class="number">32</td>
+								<td class="number">? GB</td>
+								<td class="number">? GB</td>
+								<td rowspan="3">Laptop Intel Pentium Gold</td>
+								<td rowspan="3">Zintegrowana</td>
+								<td rowspan="3" class="number">16 GB</td>
+								<td rowspan="3">Windows 11</td>
+								<td rowspan="3" style="text-align: center">Klient Vanilla</td>
+							</tr>
+							<tr>
+								<td class="number">?</td>
+								<td class="number">12</td>
+								<td class="number">? GB</td>
+								<td class="number">? GB</td>
+							</tr>
+							<tr>
+								<td class="number">?</td>
+								<td class="number">6</td>
+								<td class="number">? GB</td>
+								<td class="number">? GB</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab">
+			<label class="tabSwitch">
+				<div class="tabName">
+					Vanilla+
+				</div>
+				<input type="radio" name="tab" class="tabInput">
+			</label>
+			<div class="tabAnchor">
+				<div class="tabArea">
+					<div class="tabContent" style="background-image: url('images/iced_tea_1.png')">
+						<h2>Vanilla+</h2>
+						<p>
+	Prosty modpack, zachowany w stylu Minecrafta, starający się być logicznym rozszerzeniem elementów stworzonych przez Mojang
+						</p>
+						<table>
+							<tr>
+								<th rowspan="2">FPS</th>
+								<th rowspan="2">Odległość renderowania (Chunki)</th>
+								<th colspan="2">Shadery</th>
+								<th colspan="2">Wykorzystanie pamięci (Poglądowe)</th>
+								<th colspan="4">Parametry stanowiska testowego</th>
+								<th rowspan="2">Notatki</th>
+							</tr>
+							<tr>
+								<th>Nazwa</th>
+								<th>Ustawienia</th>
+								<th>Od</th>
+								<th>Do</th>
+								<th>CPU</th>
+								<th>GPU</th>
+								<th>RAM</th>
+								<th>OS</th>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;120</td>
+								<td class="number">32</td>
+								<td rowspan="3">Brak</td>
+								<td rowspan="3"></td>
+								<td class="number">3.4&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+								<td rowspan="9">Laptop Ryzen 7&nbsp;4800H</td>
+								<td rowspan="9">RTX 2060</td>
+								<td rowspan="9" class="number">16 GB</td>
+								<td rowspan="9">Arch Linux</td>
+								<td rowspan="3" style="text-align: center">–</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;250</td>
+								<td class="number">12</td>
+								<td class="number">2.5&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;280</td>
+								<td class="number">6</td>
+								<td class="number">2.3&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">10</td>
+								<td class="number">32</td>
+								<td rowspan="3">Rethinking Voxels</td>
+								<td rowspan="3">MAX</td>
+								<td class="number">3.4&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+								<td rowspan="3" class="long">Ustawienia własne</td>
+							</tr>
+							<tr>
+								<td class="number">15</td>
+								<td class="number">12</td>
+								<td class="number">2.5&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">19</td>
+								<td class="number">6</td>
+								<td class="number">2.3&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;30</td>
+								<td class="number">32</td>
+								<td rowspan="3">Rethinking Voxels</td>
+								<td rowspan="3">High</td>
+								<td class="number">3.4&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+								<td rowspan="3" style="text-align: center">–</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;40</td>
+								<td class="number">12</td>
+								<td class="number">2.5&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;45</td>
+								<td class="number">6</td>
+								<td class="number">2.3&nbsp;GB</td>
+								<td class="number">6.6&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;300</td>
+								<td class="number">32</td>
+								<td rowspan="3">Brak</td>
+								<td rowspan="3"></td>
+								<td class="number">3.3&nbsp;GB</td>
+								<td class="number">6.0&nbsp;GB</td>
+								<td rowspan="3">Ryzen 5&nbsp;5600X</td>
+								<td rowspan="3">RTX 3060</td>
+								<td rowspan="3" class="number">16&nbsp;GB</td>
+								<td rowspan="3">Windows 11</td>
+								<td rowspan="3" style="text-align: center">–</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;570</td>
+								<td class="number">12</td>
+								<td class="number">2.6&nbsp;GB</td>
+								<td class="number">6.0&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;710</td>
+								<td class="number">6</td>
+								<td class="number">2.6&nbsp;GB</td>
+								<td class="number">6.0&nbsp;GB</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab">
+			<label class="tabSwitch">
+				<div class="tabName">
+					Create
+				</div>
+				<input type="radio" name="tab" class="tabInput">
+			</label>
+			<div class="tabAnchor">
+				<div class="tabArea">
+					<div class="tabContent" style="background-image: url('images/create_workforce_1.png');">
+						<h2>Create</h2>
+						<p>
+	Przemysł w sześciennym wydaniu. Fabryki, samochody, samoloty, łodzie, pociągi, sterowce oraz przepiękny teren zapewniający
+	zarówno przestrzeń do budowy kompleksów przemysłowych, jak i powody do eksploracji świata.
+						</p>
+						<table>
+							<tr>
+								<th rowspan="2">FPS</th>
+								<th rowspan="2">Odległość renderowania (Chunki)</th>
+								<th colspan="2">Shadery</th>
+								<th colspan="2">Wykorzystanie pamięci (Poglądowe)</th>
+								<th colspan="4">Parametry stanowiska testowego</th>
+								<th rowspan="2">Notatki</th>
+							</tr>
+							<tr>
+								<th>Nazwa</th>
+								<th>Ustawienia</th>
+								<th>Od</th>
+								<th>Do</th>
+								<th>CPU</th>
+								<th>GPU</th>
+								<th>RAM</th>
+								<th>OS</th>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;115</td>
+								<td class="number">32</td>
+								<td rowspan="6">Brak</td>
+								<td rowspan="6"></td>
+								<td class="number">3.8 GB</td>
+								<td class="number">7.7 GB</td>
+								<td rowspan="3">Laptop Ryzen 7 4800H</td>
+								<td rowspan="3">RTX 2060</td>
+								<td rowspan="3" class="number">16 GB</td>
+								<td rowspan="3">Arch Linux</td>
+								<td rowspan="3" style="text-align: center">–</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;210</td>
+								<td class="number">12</td>
+								<td class="number">3.8 GB</td>
+								<td class="number">7.7 GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;240</td>
+								<td class="number">6</td>
+								<td class="number">3.6 GB</td>
+								<td class="number">7.7 GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;260</td>
+								<td class="number">32</td>
+								<td class="number">4.8&nbsp;GB</td>
+								<td class="number">7.6&nbsp;GB</td>
+								<td rowspan="3">Ryzen 5&nbsp;5600X</td>
+								<td rowspan="3">RTX 3060</td>
+								<td rowspan="3" class="number">16&nbsp;GB</td>
+								<td rowspan="3">Windows 11</td>
+								<td rowspan="3" style="text-align: center">–</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;530</td>
+								<td class="number">12</td>
+								<td class="number">4.2&nbsp;GB</td>
+								<td class="number">7.5&nbsp;GB</td>
+							</tr>
+							<tr>
+								<td class="number">~&nbsp;668</td>
+								<td class="number">6</td>
+								<td class="number">3.9&nbsp;GB</td>
+								<td class="number">7.5&nbsp;GB</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>
