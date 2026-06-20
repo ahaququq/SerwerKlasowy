@@ -7,195 +7,232 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Serwer S3 - Dostępne Opcje</title>
 	<style>
-		body, html {
-			display: block;
-            background-color: #ddd;
-			padding: 0;
-			margin: 0;
-            height: 100%;
-            width: 100%;
-		}
-		
-		main {
-            background-color: #aaa;
-			contain: layout;
-			/*padding: 1rem;*/
-            height: 100%;
-			width: 100%;
-		}
-		
-		* {
-            font-family: system-ui;
-		}
-		
-		.tabs {
-            background-color: #500;
-			color: #fff;
-			display: flex;
-			flex-wrap: wrap;
-			width: 100%;
-			
-			> .tabBuffer {
-				width: 100%;
-			}
-			
-			> .tab {
-				display: contents;
-                background-color: #440;
-				width: inherit;
-				
-				> .tabSwitch {
-					display: contents;
-					
-					> .tabName {
-                        order: -2;
-						z-index: 2;
-						background-color: #050;
-						width: fit-content;
-						padding: 0.5rem;
-						border-radius: 0 0 0.5rem 0.5rem;
-						user-select: none;
-						cursor: pointer;
-						margin: 0 0 0.5rem 0.5rem;
-						transition:
-							color 300ms, background-color 300ms,
-							padding 300ms, margin 300ms;
-					}
-					
-					> .tabInput {
-						display: none;
-					}
-				}
-				
-				> .tabAnchor {
-                    /*order: 1;*/
-                    width: 0.01%;
-					z-index: 0;
-                    /*height: 100%;*/
-					height: calc(100dvh - 2.875rem);
-					margin-bottom: 2.875rem;
-                    overflow-x: visible;
-					overflow-y: scroll;
-					color: #fff;
-					transition: height 3s, width 3s;
-					
-					> .tabArea {
-                        height: 100%;
-						width: 100%;
-                        overflow-x: hidden;
-						overflow-y: scroll;
-						/*transition: width 3s, height 3s;*/
-                        > .tabContent {
-                            /*margin-top: 0rem;*/
-                            /*margin-left: 35%;*/
-                            width: 100dvw;
-                            height: 100%;
-							/*height: 500rem;*/
-                            transition: width 3s, height 3s, margin 3s, padding 3s;
-                            /*background-color: #0048;*/
-							background-size: cover;
-							background-position: center;
-                            overflow-x: hidden;
-							/*overflow-y: scroll;*/
-                            padding: 2rem;
-                            box-sizing: border-box;
+		@media screen {
 
-                            h2 {
-                                margin: 0;
-                                background-color: #0007;
-								/*backdrop-filter: blur(5px);*/
-								padding: 0.5rem;
-								text-align: center;
-								border-radius: 1rem;
+            body, html {
+                display: block;
+                background-color: #ddd;
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            main {
+                background-color: #aaa;
+                contain: layout;
+                /*padding: 1rem;*/
+                height: 100%;
+                width: 100%;
+            }
+
+            * {
+                font-family: system-ui;
+            }
+
+            a {
+                color: #bbf;
+                text-decoration: none;
+                font-weight: 600;
+                font-style: italic;
+            }
+
+            a:hover {
+                color: #aff;
+                text-decoration: underline;
+            }
+
+            a:active {
+                color: #afa;
+                text-decoration: none;
+            }
+
+            code {
+                font-family: monospace;
+            }
+
+            .tabs {
+                background-color: #500;
+                color: #fff;
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+
+                > .tabBuffer {
+                    width: 100%;
+                }
+
+                > .tab {
+                    display: contents;
+                    background-color: #440;
+                    width: inherit;
+
+                    > .tabSwitch {
+                        display: contents;
+
+                        > .tabName {
+                            order: -2;
+                            z-index: 2;
+                            background-color: #050;
+                            width: fit-content;
+                            padding: 0.5rem;
+                            border-radius: 0 0 0.5rem 0.5rem;
+                            user-select: none;
+                            cursor: pointer;
+                            margin: 0 0 0.5rem 0.5rem;
+                            transition: color 300ms, background-color 300ms,
+                            padding 300ms, margin 300ms;
+                        }
+
+                        > .tabInput {
+                            display: none;
+                        }
+                    }
+
+                    > .tabAnchor {
+                        /*order: 1;*/
+                        width: 0.01%;
+                        z-index: 0;
+                        /*height: 100%;*/
+                        height: calc(100dvh - 2.875rem);
+                        margin-bottom: 2.875rem;
+                        overflow-x: visible;
+                        overflow-y: scroll;
+                        color: #fff;
+                        transition: height 3s, width 3s;
+
+                        > .tabArea {
+                            height: 100%;
+                            width: 100%;
+                            overflow-x: hidden;
+                            overflow-y: scroll;
+                            /*transition: width 3s, height 3s;*/
+
+                            > .tabContent {
+                                /*margin-top: 0rem;*/
+                                /*margin-left: 35%;*/
+                                width: 100dvw;
+                                height: 100%;
+                                /*height: 500rem;*/
+                                transition: width 3s, height 3s, margin 3s, padding 3s;
+                                /*background-color: #0048;*/
+                                background-size: cover;
+                                background-position: center;
+                                overflow-x: hidden;
+                                /*overflow-y: scroll;*/
+                                padding: 2rem;
+                                box-sizing: border-box;
+
+                                h2, h3, h4, h5, h6 {
+                                    margin-top: 0;
+                                    background-color: #003a;
+                                    /*backdrop-filter: blur(5px);*/
+                                    padding: 1rem;
+                                    border-radius: 1rem;
+                                }
+
+                                h2 {
+                                    padding: 0.5rem;
+                                    text-align: center;
+                                }
+
+                                p {
+                                    /*margin: 0;*/
+                                    background-color: #0127;
+                                    /*backdrop-filter: blur(20px);*/
+                                    padding: 1rem;
+                                    text-align: justify;
+                                    border-radius: 0.5rem;
+                                }
+
+                                table {
+                                    display: block;
+                                    width: 100%;
+                                    overflow: scroll;
+                                }
+
+                                th, td, table, tr {
+                                    /*border-collapse: collapse;*/
+                                    /*border: 1rem solid #0001;*/
+                                    border-spacing: 0.5rem;
+                                    margin: -0.5rem;
+                                }
+
+                                table {
+                                    margin-bottom: 1rem;
+                                }
+
+                                th, td {
+                                    padding: 0.5rem;
+                                    text-align: justify;
+                                    border-radius: 0.5rem;
+                                }
+
+                                th {
+                                    background-color: #003a;
+                                    /*backdrop-filter: blur(20px);*/
+                                    text-align: center;
+                                    width: fit-content
+                                }
+
+                                td {
+                                    background-color: #0127;
+                                    /*backdrop-filter: blur(5px);*/
+                                    text-align: left;
+                                    transition: background-color 300ms;
+                                    width: fit-content;
+                                }
+
+                                td.number {
+                                    text-align: right;
+                                    width: min-content;
+                                }
+
+                                td.long {
+                                    width: min-content;
+                                }
+
+                                tr:hover > td:not([rowspan]) {
+                                    background-color: #666d;
+                                }
                             }
-							
-							p {
+                        }
+                    }
+                }
+
+                > .tab:has(> .tabSwitch > .tabInput:checked) {
+                    background-color: #220;
+
+                    > .tabSwitch {
+                        > .tabName {
+                            background-color: #080;
+                            padding-bottom: 1.5rem;
+                            margin-bottom: -0.5rem;
+                        }
+                    }
+
+                    > .tabAnchor {
+                        /*order: 0;*/
+                        z-index: 1;
+                        width: 99.9%;
+
+                        > .tabArea {
+                            height: 100%;
+                            width: 100%;
+
+                            > .tabContent {
                                 /*margin: 0;*/
-                                background-color: #0005;
-                                /*backdrop-filter: blur(20px);*/
-                                padding: 1rem;
-                                text-align: justify;
-                                border-radius: 0.5rem;
-							}
-							
-							table {
-								display: block;
-								width: 100%;
-								overflow: scroll;
-							}
-							
-							th, td, table, tr {
-								/*border-collapse: collapse;*/
-								/*border: 1rem solid #0001;*/
-								border-spacing: 0.5rem;
-								margin: -0.5rem;
-							}
-							
-							th, td {
-                                padding: 0.5rem;
-                                text-align: justify;
-                                border-radius: 0.5rem;
-							}
-							
-							th {
-                                background-color: #0007;
-                                /*backdrop-filter: blur(20px);*/
-								text-align: center;
-                                width: fit-content
-							}
-							
-							td {
-                                background-color: #0005;
-                                /*backdrop-filter: blur(5px);*/
-                                text-align: left;
-								transition: background-color 300ms;
-								width: fit-content;
-							}
-							
-							td.number {
-                                text-align: right;
-								width: min-content;
-							}
-							
-							td.long {
-								width: min-content;
-							}
-							
-							tr:hover > td:not([rowspan]) {
-                                background-color: #666d;
-							}
+                                /*height: 100%;*/
+                                /*width: 100%;*/
+                                /*padding: 2rem;*/
+                                /*box-sizing: border-box;*/
+                            }
                         }
                     }
-				}
-			}
-			
-			> .tab:has(> .tabSwitch > .tabInput:checked) {
-                background-color: #220;
-				> .tabSwitch {
-					> .tabName {
-                        background-color: #080;
-						padding-bottom: 1.5rem;
-						margin-bottom: -0.5rem;
-					}
-				}
-				> .tabAnchor {
-                    /*order: 0;*/
-					z-index: 1;
-					width: 99.9%;
-                    > .tabArea {
-						height: 100%;
-						width: 100%;
-                        > .tabContent {
-                            /*margin: 0;*/
-                            /*height: 100%;*/
-                            /*width: 100%;*/
-                            /*padding: 2rem;*/
-							/*box-sizing: border-box;*/
-                        }
-                    }
-				}
-			}
-		}
+                }
+            }
+
+        }
 	
 	</style>
 </head>
@@ -309,16 +346,22 @@
 		<div class="tab">
 			<label class="tabSwitch">
 				<div class="tabName">
-					Vanilla+
+					IcedTea
 				</div>
 				<input type="radio" name="tab" class="tabInput">
 			</label>
 			<div class="tabAnchor">
 				<div class="tabArea">
 					<div class="tabContent" style="background-image: url('images/iced_tea_1.png')">
-						<h2>Vanilla+</h2>
+						<h2>Iced Tea</h2>
+						<h3>Modpack Vanilla+</h3>
 						<p>
 	Prosty modpack, zachowany w stylu Minecrafta, starający się być logicznym rozszerzeniem elementów stworzonych przez Mojang
+						</p>
+						<h3>Co dodaje</h3>
+						<p>
+							<a href="https://modrinth.com/mod/farmers-delight">Farmer's Delight</a>.
+							Dodaje on nowe rośliny, nowe potrawy oraz system gotowania.
 						</p>
 						<table>
 							<tr>
@@ -439,18 +482,50 @@
 		<div class="tab">
 			<label class="tabSwitch">
 				<div class="tabName">
-					Create
+					Create Workforce
 				</div>
 				<input type="radio" name="tab" class="tabInput">
 			</label>
 			<div class="tabAnchor">
 				<div class="tabArea">
 					<div class="tabContent" style="background-image: url('images/create_workforce_1.png');">
-						<h2>Create</h2>
+						<h2>Create Workforce</h2>
+						<h3>Prosty modpack rozwinięty dookołą Create moda</h3>
 						<p>
-	Przemysł w sześciennym wydaniu. Fabryki, samochody, samoloty, łodzie, pociągi, sterowce oraz przepiękny teren zapewniający
-	zarówno przestrzeń do budowy kompleksów przemysłowych, jak i powody do eksploracji świata.
+							Minecraft rozwinięty w kierunku przemysłu. Dodaje maszyny napędzane energią obrotową oraz elektryczną.
+							Korzystając z modów do wersji Minecrafta 1.21.1, dodaje funkcje z wersji do 1.21.6 oraz 26.2.
+							Stosując ten sam zestaw modów na generacje terenu co Vanilla+, tworzy piękne przestrzenie,
+							które dają powody do eksploracji świata. Stara się logicznie rozwijać grę w kierunku budowy fabryk i pojazdów.
 						</p>
+						<h3>Co dodaje</h3>
+						<p>
+							Zawiera prawie wszystkie mody obecne w paczce IcedTea (powstała ona przez usunięcie Create z tej paczki),
+							więc tutaj podam tylko nowe elementy.
+						<p>
+							Oczywiście pierwszym z nich jest <a href="https://modrinth.com/mod/create">Create mod</a>. Dodaje on do Minecrafta system energii obrotowej,
+							przesyłanej za pomocą kół zębatych i wałów. Energia ta może być produkowana między innymi przez koła
+							wodne, wiatraki i silniki parowe, a wykorzystują ją maszyny umożliwiające automatyzacje wielu procesów,
+							takie jak prasy, miksery i piły mechaniczne.
+						<p>
+							Drugim &OpenCurlyDoubleQuote;dużym&CloseCurlyDoubleQuote; modem jest <a href="https://modrinth.com/mod/create-aeronautics">Create Aeronautics</a>.
+							Pozwala on na tworzenie fizycznych konstrukcji, takich jak samochody, samoloty, sterowce i statki. Wszystkie bloki działają na tych konstrukcjach
+							tak samo, jak normalnie. Same konstrukcje podlegają prawom fizyki, co pozwala na stworzenie dosyć zaawansowanych układów.
+						<p>
+							Trzeci istotny mod to <a href="https://modrinth.com/mod/create-electro-energetics">Create: Electro Energetics</a>. Dodaje on symulację prądu elektrycznego.
+							Pozwala na budowę elektrowni, sieci przesyłowych i układów elektrycznych. Prąd generowany jest z energii mechanicznej i może być wykorzystany do zasilania
+							domów, fabryk i pociągów. Można zamienić energię elektryczną w mechaniczną przez silnik albo bezpośrednio wykorzystać w procesach przemysłowych
+							podgrzewając kotły, pompując ciecze lub po prostu zasilając oświetlenie.
+						<p>
+							Jedną z innych funkcji dodanych do gry przez Create Workforce paczkę są pociągi.
+							Pociąg buduje się z bloków i montuje na stacji, po czym można nim jechać gdziekolwiek,
+							gdzie tory poprowadzą. Pociągi mogą się poruszać samodzielnie, mogą spalać paliwo
+							albo otrzymywać zasilanie z sieci elektrycznej w celu zwiększenia prędkości. Kierowanie
+							pociągiem może zostać zautomatyzowane przez wykorzystanie zwierzęcia jako maszynisty,
+							przekazanie mu rozkładu jazdy oraz zainstalowanie sygnalizacji kolejowej w celu uniknięcia
+							zderzenia. Kolej może być wykorzystana zarówno do transportu graczy, jak i do transportu towarów
+							między fabrykami.
+						</p>
+						<h3>Wydajność</h3>
 						<table>
 							<tr>
 								<th rowspan="2">FPS</th>
@@ -519,6 +594,14 @@
 								<td class="number">7.5&nbsp;GB</td>
 							</tr>
 						</table>
+						<h3>Gdzie znaleźć?</h3>
+						<p>
+							Paczkę można pobrać bezpośrednio, jako plik
+							<a href="files/create-workforce-v1.0.zip"><code>.zip</code></a> lub
+							<a href="files/create-workforce-v1.0.mrpack"><code>.mrpack</code></a>.
+							Niedługo będzie dostępna do pobrania też ze strony
+							<a href="">Modrinth</a> oraz <a href="">Curseforge</a>
+						</p>
 					</div>
 				</div>
 			</div>
